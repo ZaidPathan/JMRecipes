@@ -7,5 +7,6 @@ target 'JMRecipes' do
 
   # Pods for JMRecipes
   pod 'Firebase/Core'
-
+  pod 'Firebase/Database'
+  
 end
