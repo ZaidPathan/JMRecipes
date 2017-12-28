@@ -1,0 +1,6 @@
+framework module Pods_JMRecipes {
+  umbrella header "Pods-JMRecipes-umbrella.h"
+
+  export *
+  module * { export * }
+}

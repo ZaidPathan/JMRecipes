@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="139" id="KGk-i7-Jjw" customClass="RecipeListCell" customModule="JMRecipes" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="139"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="138.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NiY-hA-Lpt">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="138.5"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bRt-c4-i80">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="138.5"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DDc-ii-xtk">
+                                <rect key="frame" x="0.0" y="104.5" width="320" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bRt-c4-i80" firstAttribute="top" secondItem="NiY-hA-Lpt" secondAttribute="top" id="3c9-f1-wrE"/>
+                            <constraint firstAttribute="bottom" secondItem="DDc-ii-xtk" secondAttribute="bottom" constant="10" id="9Cy-Jx-Hqi"/>
+                            <constraint firstAttribute="trailing" secondItem="bRt-c4-i80" secondAttribute="trailing" id="QP3-Ia-kC7"/>
+                            <constraint firstItem="bRt-c4-i80" firstAttribute="leading" secondItem="NiY-hA-Lpt" secondAttribute="leading" id="YhF-NI-ehs"/>
+                            <constraint firstAttribute="trailing" secondItem="DDc-ii-xtk" secondAttribute="trailing" id="bLk-2g-NLQ"/>
+                            <constraint firstAttribute="bottom" secondItem="bRt-c4-i80" secondAttribute="bottom" id="fKS-un-ZzW"/>
+                            <constraint firstItem="DDc-ii-xtk" firstAttribute="leading" secondItem="NiY-hA-Lpt" secondAttribute="leading" id="jjR-Eo-VcF"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="NiY-hA-Lpt" secondAttribute="bottom" id="420-Vr-Dbe"/>
+                    <constraint firstItem="NiY-hA-Lpt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="QaJ-fi-zWo"/>
+                    <constraint firstAttribute="trailing" secondItem="NiY-hA-Lpt" secondAttribute="trailing" id="Y4B-E6-kRL"/>
+                    <constraint firstItem="NiY-hA-Lpt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="ig6-js-xfF"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="recipeImage" destination="bRt-c4-i80" id="Vv1-cp-ivp"/>
+                <outlet property="recipeTitleLabel" destination="DDc-ii-xtk" id="n3e-oE-8EW"/>
+            </connections>
+            <point key="canvasLocation" x="25" y="4.5"/>
+        </tableViewCell>
+    </objects>
+</document>
