@@ -14,7 +14,7 @@
         <scene sceneID="OnN-of-jY5">
             <objects>
                 <tableViewController storyboardIdentifier="AddRecipeTVC" title="Add Recipe" id="uha-xL-TX8" customClass="AddRecipeTVC" customModule="JMRecipes" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="s3X-MH-4zn">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="s3X-MH-4zn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -77,31 +77,33 @@
                                     <outlet property="txtView" destination="fkD-MB-ISv" id="B9y-46-o8E"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ImageCell" rowHeight="150" id="SSk-nU-Y2s" customClass="ImageCell" customModule="JMRecipes" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="178" width="375" height="150"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ImageCell" rowHeight="220" id="SSk-nU-Y2s" customClass="ImageCell" customModule="JMRecipes" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="178" width="375" height="220"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SSk-nU-Y2s" id="HrI-K6-RPx">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to add Image" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Te0-Pr-4Af">
-                                            <rect key="frame" x="0.0" y="30" width="375" height="90"/>
+                                            <rect key="frame" x="0.0" y="100" width="375" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Djr-1K-DE6">
-                                            <rect key="frame" x="20" y="10" width="335" height="130"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Djr-1K-DE6">
+                                            <rect key="frame" x="20" y="10" width="335" height="200"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="200" id="gRi-IL-WKe"/>
+                                            </constraints>
                                         </imageView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="Te0-Pr-4Af" firstAttribute="centerY" secondItem="HrI-K6-RPx" secondAttribute="centerY" id="6wG-Xa-j8N"/>
                                         <constraint firstAttribute="trailing" secondItem="Te0-Pr-4Af" secondAttribute="trailing" id="Cga-pO-vb3"/>
                                         <constraint firstItem="Te0-Pr-4Af" firstAttribute="leading" secondItem="HrI-K6-RPx" secondAttribute="leading" id="CzM-LH-5hK"/>
                                         <constraint firstItem="Djr-1K-DE6" firstAttribute="leading" secondItem="HrI-K6-RPx" secondAttribute="leading" constant="20" id="YXd-Zt-EdQ"/>
-                                        <constraint firstItem="Te0-Pr-4Af" firstAttribute="top" secondItem="HrI-K6-RPx" secondAttribute="top" constant="30" id="gJ8-pZ-FkN"/>
+                                        <constraint firstAttribute="bottom" secondItem="Djr-1K-DE6" secondAttribute="bottom" constant="10" id="bky-SE-5nw"/>
                                         <constraint firstAttribute="trailing" secondItem="Djr-1K-DE6" secondAttribute="trailing" constant="20" id="gQC-D7-XvC"/>
-                                        <constraint firstAttribute="bottom" secondItem="Te0-Pr-4Af" secondAttribute="bottom" constant="30" id="mIp-DJ-14S"/>
-                                        <constraint firstAttribute="bottom" secondItem="Djr-1K-DE6" secondAttribute="bottom" constant="10" id="ree-Hw-FeI"/>
                                         <constraint firstItem="Djr-1K-DE6" firstAttribute="top" secondItem="HrI-K6-RPx" secondAttribute="top" constant="10" id="xSc-zW-YV0"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -110,7 +112,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="LabelCell" textLabel="EYF-kw-6YQ" rowHeight="60" style="IBUITableViewCellStyleDefault" id="ovX-qK-6I0">
-                                <rect key="frame" x="0.0" y="328" width="375" height="60"/>
+                                <rect key="frame" x="0.0" y="398" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ovX-qK-6I0" id="kkF-JH-WEL">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
@@ -125,6 +127,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>

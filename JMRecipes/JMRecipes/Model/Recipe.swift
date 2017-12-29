@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum RecipeError: Error {
     case badRecipeAppearance
@@ -17,6 +18,7 @@ class Recipe {
     var title: String
     var description: String
     var imagePath: String?
+    var image: UIImage?
     var videoPath: String?
     
     init(id: String, title: String, description: String, imagePath: String?,videoPath: String?) throws {

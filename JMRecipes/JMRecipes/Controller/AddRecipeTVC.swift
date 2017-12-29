@@ -7,18 +7,20 @@
 //
 
 import UIKit
+import AVFoundation
+import PhotosUI
 
 class AddRecipeTVC: UITableViewController {
     let cellTitles = ["Recipe Title", "Description", "Title Image", "Video Path"]
+    var recipe: Recipe?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        do {
+            recipe = try Recipe(id: "", title: "", description: "", imagePath: "", videoPath: "")
+        } catch {
+            debugPrint(error)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,15 +42,19 @@ class AddRecipeTVC: UITableViewController {
         if (indexPath.row == 0) || (indexPath.row == 3) {
             let textFieldCell = tableView.dequeueReusableCell(withIdentifier: "TextFieldCell", for: indexPath) as? TextFieldCell
             textFieldCell?.txtField.placeholder = cellTitles[indexPath.row]
-            
+            textFieldCell?.txtField.delegate = self
+            textFieldCell?.txtField.text = (indexPath.row == 0) ? recipe?.title : recipe?.videoPath
+            textFieldCell?.tag = indexPath.row
             return textFieldCell!
         } else if (indexPath.row == 1) {
             let textViewCell = tableView.dequeueReusableCell(withIdentifier: "TextViewCell", for: indexPath) as? TextViewCell
-            
+            textViewCell?.txtView.delegate = self
+            textViewCell?.txtView.text = recipe?.description
             return textViewCell!
         } else if (indexPath.row == 2) {
             let imageCell = tableView.dequeueReusableCell(withIdentifier: "ImageCell", for: indexPath) as? ImageCell
-            
+            imageCell?.imageView?.image = recipe?.image
+            imageCell?.recipeImage.contentMode = UIViewContentMode.scaleAspectFill
             return imageCell!
         } else if (indexPath.row == 4) {
             let labelCell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
@@ -59,49 +65,119 @@ class AddRecipeTVC: UITableViewController {
         }
     }
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 2 {
+            addImage()
+        } else if indexPath.row == 4 {
+            
+        } else {
+            
+        }
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    func addImage() {
+        func performCameraFunction(){
+            switch AVCaptureDevice.authorizationStatus(for: .video) {
+            case .notDetermined:
+                debugPrint("notDetermined")
+            case .authorized:
+                debugPrint("authorized")
+            case .denied:
+                showAlert(title: "Give access to Camera", message: "",b1Title:"Go to Settings", onB1Click: {
+                    guard let settingsURL = URL(string: UIApplicationOpenSettingsURLString) else { return }
+                    if UIApplication.shared.canOpenURL(settingsURL){
+                        UIApplication.shared.open(settingsURL, options: [:], completionHandler: nil)
+                    }
+                })
+                
+            case .restricted:
+                debugPrint("restricted")
+                
+            }
+            
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                let imagePickerController = UIImagePickerController()
+                imagePickerController.sourceType = .camera
+                imagePickerController.allowsEditing = true
+                imagePickerController.delegate = self
+                self.present(imagePickerController, animated: true, completion: nil)
+            } else {
+                debugPrint("Cam unavail")
+            }
+        }
+        func performGalleryFunction(){
+            switch PHPhotoLibrary.authorizationStatus() {
+            case .authorized:
+                break
+            case .denied:
+                showAlert(title: "Give access to photos", message: "",b1Title:"Go to Settings", onB1Click: {
+                    guard let settingsURL = URL(string: UIApplicationOpenSettingsURLString) else { return }
+                    if UIApplication.shared.canOpenURL(settingsURL){
+                        UIApplication.shared.open(settingsURL, options: [:], completionHandler: nil)
+                    }
+                })
+                break
+            case .notDetermined:
+                break
+            case .restricted:
+                break
+            }
+            
+            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+                let imagePickerController = UIImagePickerController()
+                imagePickerController.sourceType = .photoLibrary
+                imagePickerController.allowsEditing = true
+                imagePickerController.delegate = self
+                self.present(imagePickerController, animated: true, completion: nil)
+            } else {
+                debugPrint("Photo Library unavail")
+            }
+        }
+        
+        let actionSheet = UIAlertController(title: "Choose Source", message: "", preferredStyle: .actionSheet)
+        
+        let photoAction = UIAlertAction(title: "Gallery", style: UIAlertActionStyle.default) { (action) in
+            performGalleryFunction()
+        }
+        
+        let camAction = UIAlertAction(title: "Camera", style: UIAlertActionStyle.default) { (action) in
+            performCameraFunction()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
+        
+        actionSheet.addAction(camAction)
+        actionSheet.addAction(photoAction)
+        actionSheet.addAction(cancelAction)
+        
+        self.present(actionSheet, animated: true, completion: nil)
     }
-    */
+}
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+extension AddRecipeTVC: UITextFieldDelegate, UITextViewDelegate{
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField.tag == 0 {
+            recipe?.title = textField.text!
+        } else if textField.tag == 3 {
+            recipe?.videoPath = textField.text
+        } else {
+            debugPrint("Unknown textfield")
+        }
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        recipe?.description = textView.text
     }
-    */
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+extension AddRecipeTVC: UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let image = info[UIImagePickerControllerEditedImage] as? UIImage
+        recipe?.image = image
+        tableView.reloadData()
+        picker.dismiss(animated: true)
     }
-    */
-
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil);
+    }
 }
