@@ -58,7 +58,7 @@
                                     <subviews>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fkD-MB-ISv">
                                             <rect key="frame" x="20" y="10" width="335" height="70"/>
-                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="70" id="yI3-qU-zQZ"/>
                                             </constraints>
@@ -85,7 +85,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to add Image" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Te0-Pr-4Af">
-                                            <rect key="frame" x="0.0" y="20" width="375" height="110"/>
+                                            <rect key="frame" x="0.0" y="30" width="375" height="90"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -98,9 +98,9 @@
                                         <constraint firstAttribute="trailing" secondItem="Te0-Pr-4Af" secondAttribute="trailing" id="Cga-pO-vb3"/>
                                         <constraint firstItem="Te0-Pr-4Af" firstAttribute="leading" secondItem="HrI-K6-RPx" secondAttribute="leading" id="CzM-LH-5hK"/>
                                         <constraint firstItem="Djr-1K-DE6" firstAttribute="leading" secondItem="HrI-K6-RPx" secondAttribute="leading" constant="20" id="YXd-Zt-EdQ"/>
-                                        <constraint firstItem="Te0-Pr-4Af" firstAttribute="top" secondItem="HrI-K6-RPx" secondAttribute="top" constant="20" id="gJ8-pZ-FkN"/>
+                                        <constraint firstItem="Te0-Pr-4Af" firstAttribute="top" secondItem="HrI-K6-RPx" secondAttribute="top" constant="30" id="gJ8-pZ-FkN"/>
                                         <constraint firstAttribute="trailing" secondItem="Djr-1K-DE6" secondAttribute="trailing" constant="20" id="gQC-D7-XvC"/>
-                                        <constraint firstAttribute="bottom" secondItem="Te0-Pr-4Af" secondAttribute="bottom" constant="20" id="mIp-DJ-14S"/>
+                                        <constraint firstAttribute="bottom" secondItem="Te0-Pr-4Af" secondAttribute="bottom" constant="30" id="mIp-DJ-14S"/>
                                         <constraint firstAttribute="bottom" secondItem="Djr-1K-DE6" secondAttribute="bottom" constant="10" id="ree-Hw-FeI"/>
                                         <constraint firstItem="Djr-1K-DE6" firstAttribute="top" secondItem="HrI-K6-RPx" secondAttribute="top" constant="10" id="xSc-zW-YV0"/>
                                     </constraints>
@@ -119,6 +119,7 @@
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Add Recipe" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EYF-kw-6YQ">
                                             <rect key="frame" x="16" y="0.0" width="343" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
