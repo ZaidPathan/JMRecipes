@@ -11,6 +11,7 @@ import UIKit
 
 enum RecipeError: Error {
     case badRecipeAppearance
+    case recipeCreationError
 }
 
 class Recipe {
@@ -31,6 +32,36 @@ class Recipe {
         //Don't allow If both ImagePath and VideoPath nil
         guard (imagePath != nil) && (videoPath != nil) else {
             throw RecipeError.badRecipeAppearance
+        }
+    }
+    
+    init(docData: [String: Any]) throws {
+        if let id = docData[Const.APIParams.id] as? String {
+            self.id = id
+        } else {
+            throw RecipeError.recipeCreationError
+        }
+        
+        if let title = docData[Const.APIParams.title] as? String {
+            self.title = title
+        } else {
+            throw RecipeError.recipeCreationError
+        }
+        
+        if let description = docData[Const.APIParams.description] as? String {
+           self.description = description
+        } else {
+            throw RecipeError.recipeCreationError
+        }
+        
+        if let imagePath = docData[Const.APIParams.imagePath] as? String {
+            self.imagePath = imagePath
+        } else {
+            if let videoPath = docData[Const.APIParams.videoPath] as? String {
+               self.videoPath = videoPath
+            } else {
+                throw RecipeError.recipeCreationError
+            }
         }
     }
 }

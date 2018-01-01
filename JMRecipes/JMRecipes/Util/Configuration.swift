@@ -9,7 +9,7 @@
 import UIKit
 
 struct Configuration {
-    lazy var environment: Environment = {
+    static let environment: Environment = {
         if let configuration = Bundle.main.object(forInfoDictionaryKey: "Configuration") as? String {
             if configuration.range(of: "JMRecipes-Chef") != nil {
                 return Environment.Chef

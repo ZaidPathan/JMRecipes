@@ -10,14 +10,28 @@ import UIKit
 
 class RecipeBookTVC: UITableViewController {
 
+    @IBOutlet weak var btnAdd: UIButton!
+    var arrRecipe: [Recipe]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        setupOnLoad()
+    }
+    
+    private func setupOnLoad() {
+        tableView.registerCell(id: Const.Cells.recipeListCell)
+        btnAdd.isHidden = (Configuration.environment != .Chef)
+        
+        arrRecipe = []
+        fetchRecipe()
+    }
+    
+    private func fetchRecipe() {
+        FirebaseManager.shared.readRecipes { (arrRecipe, error) in
+            guard let arrRecipe = arrRecipe else { return }
+            self.arrRecipe = arrRecipe
+            self.tableView.reloadData()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,24 +42,25 @@ class RecipeBookTVC: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        guard let arrRecipe = arrRecipe else {
+            return 0
+        }
+        
+        return arrRecipe.isEmpty ? 0 : 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        guard let arrRecipe = arrRecipe else { return 0 }
+        return arrRecipe.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let recipeListCell = tableView.dequeueReusableCell(withIdentifier: "RecipeListCell", for: indexPath) as? RecipeListCell
+        recipeListCell?.recipeTitleLabel.text = arrRecipe?[indexPath.row].title
 
-        // Configure the cell...
-
-        return cell
+        return recipeListCell!
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.

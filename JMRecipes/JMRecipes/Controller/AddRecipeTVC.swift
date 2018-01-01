@@ -17,7 +17,7 @@ class AddRecipeTVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         do {
-            recipe = try Recipe(id: "", title: "", description: "", imagePath: "", videoPath: "")
+            recipe = try Recipe(id: NSUUID().uuidString , title: "", description: "", imagePath: "", videoPath: "")
         } catch {
             debugPrint(error)
         }
@@ -41,6 +41,7 @@ class AddRecipeTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if (indexPath.row == 0) || (indexPath.row == 3) {
             let textFieldCell = tableView.dequeueReusableCell(withIdentifier: "TextFieldCell", for: indexPath) as? TextFieldCell
+            textFieldCell?.txtField.tag = indexPath.row
             textFieldCell?.txtField.placeholder = cellTitles[indexPath.row]
             textFieldCell?.txtField.delegate = self
             textFieldCell?.txtField.text = (indexPath.row == 0) ? recipe?.title : recipe?.videoPath
@@ -54,7 +55,7 @@ class AddRecipeTVC: UITableViewController {
         } else if (indexPath.row == 2) {
             let imageCell = tableView.dequeueReusableCell(withIdentifier: "ImageCell", for: indexPath) as? ImageCell
             imageCell?.imageView?.image = recipe?.image
-            imageCell?.recipeImage.contentMode = UIViewContentMode.scaleAspectFill
+            imageCell?.recipeImage.contentMode = UIViewContentMode.center
             return imageCell!
         } else if (indexPath.row == 4) {
             let labelCell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
@@ -69,7 +70,7 @@ class AddRecipeTVC: UITableViewController {
         if indexPath.row == 2 {
             addImage()
         } else if indexPath.row == 4 {
-            
+            saveRecipe()
         } else {
             
         }
@@ -150,6 +151,61 @@ class AddRecipeTVC: UITableViewController {
         actionSheet.addAction(cancelAction)
         
         self.present(actionSheet, animated: true, completion: nil)
+    }
+
+    func saveRecipe() {
+        if let title = recipe?.title, !title.isEmpty {
+            
+        } else {
+            tableView.shake()
+            return
+        }
+        
+        if let description = recipe?.description, !description.isEmpty {
+            
+        } else {
+            tableView.shake()
+            return
+        }
+        
+        if let recipeImage = recipe?.image {
+            startLoading()
+            FirebaseManager.shared.saveRecipeImage(image: recipeImage, completion: { (filePath, error) in
+                self.stopLoading()
+                
+                if let filePath = filePath {
+                    self.recipe?.imagePath = filePath
+                } else {
+                    self.showAlert(title: FirebaseError.fileUploadFailed.localizedDescription , message: nil, onB1Click: nil)
+                }
+            })
+        } else {
+            if let videoPath = recipe?.videoPath, !videoPath.isEmpty, let _ = URL(string: videoPath) {
+                self.recipe?.videoPath = videoPath
+            } else {
+                 self.showAlert(title: Const.Alert.oneFileNeeded , message: nil, onB1Click: nil)
+                tableView.shake()
+                return
+            }
+        }
+        
+        do {
+            startLoading()
+            try FirebaseManager.shared.createRecipe(recipe: self.recipe!) { (error) in
+                self.stopLoading()
+                
+                if let error = error {
+                    self.showAlert(title: error.localizedDescription , message: nil, onB1Click: nil)
+                } else {
+                    self.showAlert(title: Const.Alert.recipeStored , message: nil, onB1Click: {
+                        self.navigationController?.popViewController(animated: true)
+                    })
+                }
+            }
+        } catch {
+            stopLoading()
+            self.showAlert(title: error.localizedDescription , message: nil, onB1Click: nil)
+        }
     }
 }
 

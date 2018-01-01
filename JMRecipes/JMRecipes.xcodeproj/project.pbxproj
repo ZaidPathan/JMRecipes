@@ -21,7 +21,9 @@
 		1555177B1FF51BEC008C793C /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1555177A1FF51BEC008C793C /* UITableView.swift */; };
 		155517811FF51C72008C793C /* RecipeBookTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155517801FF51C72008C793C /* RecipeBookTVC.swift */; };
 		155517831FF51C7F008C793C /* RecipeVideosTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155517821FF51C7F008C793C /* RecipeVideosTVC.swift */; };
+		15A228341FFA150600907C09 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A228331FFA150600907C09 /* UITextField.swift */; };
 		15A9B14D1FF65F6F001B0AF4 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A9B14C1FF65F6F001B0AF4 /* UIViewController.swift */; };
+		15A9B14F1FF68864001B0AF4 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A9B14E1FF68864001B0AF4 /* UIView.swift */; };
 		15AC4B521FF5321B007ACD16 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AC4B511FF5321B007ACD16 /* FirebaseManager.swift */; };
 		15FFD2981FF62093001C8987 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FFD2971FF62093001C8987 /* Recipe.swift */; };
 		15FFD29A1FF62263001C8987 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FFD2991FF62263001C8987 /* Const.swift */; };
@@ -49,7 +51,9 @@
 		1555177A1FF51BEC008C793C /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		155517801FF51C72008C793C /* RecipeBookTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeBookTVC.swift; sourceTree = "<group>"; };
 		155517821FF51C7F008C793C /* RecipeVideosTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeVideosTVC.swift; sourceTree = "<group>"; };
+		15A228331FFA150600907C09 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		15A9B14C1FF65F6F001B0AF4 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		15A9B14E1FF68864001B0AF4 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		15AC4B511FF5321B007ACD16 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		15FFD2971FF62093001C8987 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		15FFD2991FF62263001C8987 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
@@ -173,8 +177,10 @@
 		155517791FF51BE0008C793C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				15A9B14E1FF68864001B0AF4 /* UIView.swift */,
 				1555177A1FF51BEC008C793C /* UITableView.swift */,
 				15A9B14C1FF65F6F001B0AF4 /* UIViewController.swift */,
+				15A228331FFA150600907C09 /* UITextField.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -340,12 +346,14 @@
 				15FFD29A1FF62263001C8987 /* Const.swift in Sources */,
 				15A9B14D1FF65F6F001B0AF4 /* UIViewController.swift in Sources */,
 				155517831FF51C7F008C793C /* RecipeVideosTVC.swift in Sources */,
+				15A228341FFA150600907C09 /* UITextField.swift in Sources */,
 				155517721FF518AB008C793C /* Environment.swift in Sources */,
 				155517771FF51B40008C793C /* RecipeListCell.swift in Sources */,
 				155517811FF51C72008C793C /* RecipeBookTVC.swift in Sources */,
 				15FFD2A01FF64C73001C8987 /* TextViewCell.swift in Sources */,
 				15FFD2A21FF64DDC001C8987 /* ImageCell.swift in Sources */,
 				1555177B1FF51BEC008C793C /* UITableView.swift in Sources */,
+				15A9B14F1FF68864001B0AF4 /* UIView.swift in Sources */,
 				15FFD2981FF62093001C8987 /* Recipe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

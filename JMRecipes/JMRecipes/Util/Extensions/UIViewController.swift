@@ -34,4 +34,23 @@ extension UIViewController {
         
         present(alert, animated: true, completion: nil)
     }
+    
+    func startLoading() {
+        let activity = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        activity.backgroundColor = UIColor.gray.withAlphaComponent(0.3)
+        view.addSubview(activity)
+        view.bringSubview(toFront: activity)
+        
+        activity.frame = view.frame
+        
+        activity.startAnimating()
+    }
+    
+    func stopLoading() {
+        for subView in view.subviews {
+            if subView.isKind(of: UIActivityIndicatorView.self) {
+                subView.removeFromSuperview()
+            }
+        }
+    }
 }

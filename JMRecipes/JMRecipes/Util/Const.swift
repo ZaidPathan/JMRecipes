@@ -9,9 +9,16 @@
 import Foundation
 
 struct Const {
+    struct Cells {
+        static let recipeListCell = "RecipeListCell"
+    }
+    
     struct FirestorePath {
-        static let recipeBook = "recipeBook"
-        static let videoRecipes = "videoRecipes"
+        static let recipes = "recipes"
+    }
+    
+    struct FireStoragepath {
+        static let recipeImages = "recipeImages/"
     }
     
     struct APIParams {
@@ -20,5 +27,10 @@ struct Const {
         static let description = "description"
         static let imagePath = "imagePath"
         static let videoPath = "videoPath"
+    }
+    
+    struct Alert {
+        static let oneFileNeeded = "Image or Valid Video URL, any one of them is required."
+        static let recipeStored = "Recipe Stored Successfully"
     }
 }
