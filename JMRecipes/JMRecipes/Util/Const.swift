@@ -34,7 +34,10 @@ struct Const {
         static let recipeStored = "Recipe Stored Successfully"
     }
     
-    struct Label {
+    struct Strings {
         static let noRecipeFound = "No recipe found at this moment :("
+        static let ptr = "Pull down to refresh recipes 🥘"
     }
+    
+    
 }

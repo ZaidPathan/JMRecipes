@@ -22,7 +22,7 @@ class RecipeBookTVC: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        fetchRecipe()
+        fetchRecipe(shouldShowRefresh: false)
     }
     
     private func setupOnLoad() {
@@ -30,10 +30,29 @@ class RecipeBookTVC: UITableViewController {
         btnAdd.isHidden = (Configuration.environment == .Release)
         
         arrRecipe = []
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: Const.Strings.ptr)
+        refreshControl.addTarget(self, action: #selector(refresh), for: UIControlEvents.valueChanged)
+        self.refreshControl = refreshControl
     }
     
-    private func fetchRecipe() {
+    @objc func refresh() {
+        fetchRecipe(shouldShowRefresh: true)
+    }
+    
+    private func fetchRecipe(shouldShowRefresh: Bool) {
+        if shouldShowRefresh {
+            self.refreshControl?.beginRefreshing()
+        }
+        
+        startLoading()
         FirebaseManager.shared.readRecipes { (arrRecipe, error) in
+            if shouldShowRefresh {
+                self.refreshControl?.endRefreshing()
+            }
+            
+            self.stopLoading()
             guard let arrRecipe = arrRecipe else { return }
             self.arrRecipe = arrRecipe
             self.tableView.reloadData()
@@ -49,10 +68,11 @@ class RecipeBookTVC: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         guard let arrRecipe = arrRecipe, !arrRecipe.isEmpty else {
-            tableView.backgroundView = NoDataLabel.labelWithTitle(title: Const.Label.noRecipeFound, frame: tableView.frame)
+            tableView.backgroundView = NoDataLabel.labelWithTitle(title: Const.Strings.noRecipeFound, frame: tableView.frame)
             return 0
         }
         
+        tableView.backgroundView = nil
         return 1
     }
 
