@@ -33,4 +33,8 @@ struct Const {
         static let oneFileNeeded = "Image or Valid Video URL, any one of them is required."
         static let recipeStored = "Recipe Stored Successfully"
     }
+    
+    struct Label {
+        static let noRecipeFound = "No recipe found at this moment :("
+    }
 }

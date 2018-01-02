@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class RecipeBookTVC: UITableViewController {
 
@@ -18,12 +19,17 @@ class RecipeBookTVC: UITableViewController {
         setupOnLoad()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        fetchRecipe()
+    }
+    
     private func setupOnLoad() {
         tableView.registerCell(id: Const.Cells.recipeListCell)
-        btnAdd.isHidden = (Configuration.environment != .Chef)
+        btnAdd.isHidden = (Configuration.environment == .Release)
         
         arrRecipe = []
-        fetchRecipe()
     }
     
     private func fetchRecipe() {
@@ -42,15 +48,16 @@ class RecipeBookTVC: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        guard let arrRecipe = arrRecipe else {
+        guard let arrRecipe = arrRecipe, !arrRecipe.isEmpty else {
+            tableView.backgroundView = NoDataLabel.labelWithTitle(title: Const.Label.noRecipeFound, frame: tableView.frame)
             return 0
         }
         
-        return arrRecipe.isEmpty ? 0 : 1
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let arrRecipe = arrRecipe else { return 0 }
+        guard let arrRecipe = arrRecipe, !arrRecipe.isEmpty else { return 0 }
         return arrRecipe.count
     }
 
@@ -58,29 +65,53 @@ class RecipeBookTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let recipeListCell = tableView.dequeueReusableCell(withIdentifier: "RecipeListCell", for: indexPath) as? RecipeListCell
         recipeListCell?.recipeTitleLabel.text = arrRecipe?[indexPath.row].title
+        
+        if let imagePath = (arrRecipe?[indexPath.row].imagePath), let imageURL = URL(string: imagePath) {
+            recipeListCell?.recipeImage.sd_setImage(with: imageURL, placeholderImage: #imageLiteral(resourceName: "sampleDish"), options: SDWebImageOptions.highPriority, completed: { (image, error, cacheType, url) in
 
+            })
+        } else {
+            recipeListCell?.recipeImage.image = #imageLiteral(resourceName: "sampleDish")
+        }
+        
         return recipeListCell!
     }
 
-    /*
+    
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
+ 
 
-    /*
+    
+    func deleteRecipe(forId id: String) {
+        FirebaseManager.shared.deleteRecipe(id: id) { (error) in
+            if let _ = error {
+                debugPrint("Error deleting recipe")
+            } else {
+                debugPrint("Recipe deleted")
+            }
+        }
+    }
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            let recipeId = arrRecipe?[indexPath.row].id
+            arrRecipe?.remove(at: indexPath.row)
+            
+            if (arrRecipe?.isEmpty)! {
+                tableView.deleteSections(IndexSet([0]), with: .fade)
+            } else {
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+
+            deleteRecipe(forId: recipeId!)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
 
     /*
     // Override to support rearranging the table view.

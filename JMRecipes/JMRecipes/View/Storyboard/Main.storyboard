@@ -148,7 +148,7 @@
         <scene sceneID="g01-ie-SEH">
             <objects>
                 <tableViewController storyboardIdentifier="RecipeBookTVC" clearsSelectionOnViewWillAppear="NO" id="3UX-Xs-3dz" customClass="RecipeBookTVC" customModule="JMRecipes" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="bXA-Wu-5JD">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="300" estimatedRowHeight="300" sectionHeaderHeight="28" sectionFooterHeight="28" id="bXA-Wu-5JD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -270,7 +270,7 @@
         <scene sceneID="UsP-LI-ovp">
             <objects>
                 <tableViewController storyboardIdentifier="RecipeVideosTVC" clearsSelectionOnViewWillAppear="NO" id="wrj-Ch-Afy" customClass="RecipeVideosTVC" customModule="JMRecipes" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="iDB-cQ-9zI">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="300" sectionHeaderHeight="28" sectionFooterHeight="28" id="iDB-cQ-9zI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

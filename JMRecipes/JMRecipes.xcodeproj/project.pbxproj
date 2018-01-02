@@ -24,6 +24,7 @@
 		15A228341FFA150600907C09 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A228331FFA150600907C09 /* UITextField.swift */; };
 		15A9B14D1FF65F6F001B0AF4 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A9B14C1FF65F6F001B0AF4 /* UIViewController.swift */; };
 		15A9B14F1FF68864001B0AF4 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A9B14E1FF68864001B0AF4 /* UIView.swift */; };
+		15AB32461FFB72DB006B4384 /* NoDataLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AB32451FFB72DB006B4384 /* NoDataLabel.swift */; };
 		15AC4B521FF5321B007ACD16 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AC4B511FF5321B007ACD16 /* FirebaseManager.swift */; };
 		15FFD2981FF62093001C8987 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FFD2971FF62093001C8987 /* Recipe.swift */; };
 		15FFD29A1FF62263001C8987 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FFD2991FF62263001C8987 /* Const.swift */; };
@@ -54,6 +55,7 @@
 		15A228331FFA150600907C09 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		15A9B14C1FF65F6F001B0AF4 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		15A9B14E1FF68864001B0AF4 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		15AB32451FFB72DB006B4384 /* NoDataLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoDataLabel.swift; sourceTree = "<group>"; };
 		15AC4B511FF5321B007ACD16 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		15FFD2971FF62093001C8987 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		15FFD2991FF62263001C8987 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 		1555174A1FF4FDD8008C793C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				15AB32441FFB72CF006B4384 /* Comps */,
 				155517731FF51B18008C793C /* TableViewCells */,
 				1555174C1FF4FDEB008C793C /* Storyboard */,
 			);
@@ -183,6 +186,14 @@
 				15A228331FFA150600907C09 /* UITextField.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		15AB32441FFB72CF006B4384 /* Comps */ = {
+			isa = PBXGroup;
+			children = (
+				15AB32451FFB72DB006B4384 /* NoDataLabel.swift */,
+			);
+			path = Comps;
 			sourceTree = "<group>";
 		};
 		15AC4B501FF5320F007ACD16 /* Managers */ = {
@@ -355,6 +366,7 @@
 				1555177B1FF51BEC008C793C /* UITableView.swift in Sources */,
 				15A9B14F1FF68864001B0AF4 /* UIView.swift in Sources */,
 				15FFD2981FF62093001C8987 /* Recipe.swift in Sources */,
+				15AB32461FFB72DB006B4384 /* NoDataLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

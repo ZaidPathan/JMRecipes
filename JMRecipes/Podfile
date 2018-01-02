@@ -10,4 +10,5 @@ target 'JMRecipes' do
   pod 'Firebase/Firestore'
   pod 'Firebase/Storage'
   
+  pod 'SDWebImage'
 end

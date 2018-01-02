@@ -35,12 +35,8 @@ class Recipe {
         }
     }
     
-    init(docData: [String: Any]) throws {
-        if let id = docData[Const.APIParams.id] as? String {
-            self.id = id
-        } else {
-            throw RecipeError.recipeCreationError
-        }
+    init(docData: [String: Any], id: String) throws {
+        self.id = id
         
         if let title = docData[Const.APIParams.title] as? String {
             self.title = title

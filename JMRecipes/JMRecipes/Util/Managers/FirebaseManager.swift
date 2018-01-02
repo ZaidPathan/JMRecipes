@@ -30,8 +30,7 @@ class FirebaseManager {
     
     //Recipe Book CRUD
     func createRecipe(recipe: Recipe, completion: ((_ error: Error?)->())?) throws {
-        var data: [String: Any] = [Const.APIParams.id: recipe.id,
-                                   Const.APIParams.title:recipe.title,
+        var data: [String: Any] = [Const.APIParams.title:recipe.title,
                                    Const.APIParams.description:recipe.description]
         
         //If imagePath->Store recipe to book, else to videos
@@ -54,7 +53,8 @@ class FirebaseManager {
             if let snap = snap {
                 for doc in snap.documents {
                     do {
-                        let recipe = try Recipe(docData: doc.data())
+                        let recipe = try Recipe(docData: doc.data(), id: doc.documentID)
+                        
                         arrRecipe.append(recipe)
                     } catch {
                         completion(nil, FirebaseError.recipeDownloadError)
@@ -71,8 +71,10 @@ class FirebaseManager {
         
     }
     
-    func deleteRecipe() {
-        
+    func deleteRecipe(id: String, completion: ((Error?)->())?) {
+        db.collection(Const.FirestorePath.recipes).document(id).delete(completion: { (error) in
+            completion?(error)
+        })
     }
     
     func saveRecipeImage(image: UIImage, completion: @escaping (_ fileURL: String?, _ error: Error?)->()) {

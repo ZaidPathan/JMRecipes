@@ -17,7 +17,7 @@ class AddRecipeTVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         do {
-            recipe = try Recipe(id: NSUUID().uuidString , title: "", description: "", imagePath: "", videoPath: "")
+            recipe = try Recipe(id: "" , title: "", description: "", imagePath: "", videoPath: "")
         } catch {
             debugPrint(error)
         }
@@ -154,6 +154,26 @@ class AddRecipeTVC: UITableViewController {
     }
 
     func saveRecipe() {
+        func addRecipe(recipe: Recipe) {
+            do {
+                startLoading()
+                try FirebaseManager.shared.createRecipe(recipe: recipe) { (error) in
+                    self.stopLoading()
+                    
+                    if let error = error {
+                        self.showAlert(title: error.localizedDescription , message: nil, onB1Click: nil)
+                    } else {
+                        self.showAlert(title: Const.Alert.recipeStored , message: nil, onB1Click: {
+                            self.navigationController?.popViewController(animated: true)
+                        })
+                    }
+                }
+            } catch {
+                stopLoading()
+                self.showAlert(title: error.localizedDescription , message: nil, onB1Click: nil)
+            }
+        }
+        
         if let title = recipe?.title, !title.isEmpty {
             
         } else {
@@ -175,36 +195,21 @@ class AddRecipeTVC: UITableViewController {
                 
                 if let filePath = filePath {
                     self.recipe?.imagePath = filePath
+                    addRecipe(recipe: self.recipe!)
                 } else {
                     self.showAlert(title: FirebaseError.fileUploadFailed.localizedDescription , message: nil, onB1Click: nil)
+                    return
                 }
             })
         } else {
             if let videoPath = recipe?.videoPath, !videoPath.isEmpty, let _ = URL(string: videoPath) {
                 self.recipe?.videoPath = videoPath
+                addRecipe(recipe: self.recipe!)
             } else {
                  self.showAlert(title: Const.Alert.oneFileNeeded , message: nil, onB1Click: nil)
                 tableView.shake()
                 return
             }
-        }
-        
-        do {
-            startLoading()
-            try FirebaseManager.shared.createRecipe(recipe: self.recipe!) { (error) in
-                self.stopLoading()
-                
-                if let error = error {
-                    self.showAlert(title: error.localizedDescription , message: nil, onB1Click: nil)
-                } else {
-                    self.showAlert(title: Const.Alert.recipeStored , message: nil, onB1Click: {
-                        self.navigationController?.popViewController(animated: true)
-                    })
-                }
-            }
-        } catch {
-            stopLoading()
-            self.showAlert(title: error.localizedDescription , message: nil, onB1Click: nil)
         }
     }
 }
