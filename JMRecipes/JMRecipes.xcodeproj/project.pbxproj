@@ -12,7 +12,6 @@
 		1555174F1FF4FE36008C793C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1555174D1FF4FE36008C793C /* LaunchScreen.storyboard */; };
 		155517501FF4FE36008C793C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1555174E1FF4FE36008C793C /* Main.storyboard */; };
 		155517521FF503EC008C793C /* RecipeBookSVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155517511FF503EC008C793C /* RecipeBookSVC.swift */; };
-		155517541FF503FF008C793C /* RecipeVideosSVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155517531FF503FF008C793C /* RecipeVideosSVC.swift */; };
 		155517561FF51149008C793C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 155517551FF51149008C793C /* GoogleService-Info.plist */; };
 		155517701FF51875008C793C /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1555176F1FF51875008C793C /* Configuration.swift */; };
 		155517721FF518AB008C793C /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155517711FF518AA008C793C /* Environment.swift */; };
@@ -20,7 +19,6 @@
 		155517781FF51B40008C793C /* RecipeListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 155517761FF51B40008C793C /* RecipeListCell.xib */; };
 		1555177B1FF51BEC008C793C /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1555177A1FF51BEC008C793C /* UITableView.swift */; };
 		155517811FF51C72008C793C /* RecipeBookTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155517801FF51C72008C793C /* RecipeBookTVC.swift */; };
-		155517831FF51C7F008C793C /* RecipeVideosTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155517821FF51C7F008C793C /* RecipeVideosTVC.swift */; };
 		15A228341FFA150600907C09 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A228331FFA150600907C09 /* UITextField.swift */; };
 		15A9B14D1FF65F6F001B0AF4 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A9B14C1FF65F6F001B0AF4 /* UIViewController.swift */; };
 		15A9B14F1FF68864001B0AF4 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A9B14E1FF68864001B0AF4 /* UIView.swift */; };
@@ -43,7 +41,6 @@
 		1555174D1FF4FE36008C793C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1555174E1FF4FE36008C793C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		155517511FF503EC008C793C /* RecipeBookSVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeBookSVC.swift; sourceTree = "<group>"; };
-		155517531FF503FF008C793C /* RecipeVideosSVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeVideosSVC.swift; sourceTree = "<group>"; };
 		155517551FF51149008C793C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1555176F1FF51875008C793C /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		155517711FF518AA008C793C /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
@@ -51,7 +48,6 @@
 		155517761FF51B40008C793C /* RecipeListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeListCell.xib; sourceTree = "<group>"; };
 		1555177A1FF51BEC008C793C /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		155517801FF51C72008C793C /* RecipeBookTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeBookTVC.swift; sourceTree = "<group>"; };
-		155517821FF51C7F008C793C /* RecipeVideosTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeVideosTVC.swift; sourceTree = "<group>"; };
 		15A228331FFA150600907C09 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		15A9B14C1FF65F6F001B0AF4 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		15A9B14E1FF68864001B0AF4 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
@@ -118,9 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				155517511FF503EC008C793C /* RecipeBookSVC.swift */,
-				155517531FF503FF008C793C /* RecipeVideosSVC.swift */,
 				155517801FF51C72008C793C /* RecipeBookTVC.swift */,
-				155517821FF51C7F008C793C /* RecipeVideosTVC.swift */,
 				15FFD29B1FF64ABA001C8987 /* AddRecipeTVC.swift */,
 			);
 			path = Controller;
@@ -353,10 +347,8 @@
 				15AC4B521FF5321B007ACD16 /* FirebaseManager.swift in Sources */,
 				155517701FF51875008C793C /* Configuration.swift in Sources */,
 				15FFD29E1FF64C6A001C8987 /* TextFieldCell.swift in Sources */,
-				155517541FF503FF008C793C /* RecipeVideosSVC.swift in Sources */,
 				15FFD29A1FF62263001C8987 /* Const.swift in Sources */,
 				15A9B14D1FF65F6F001B0AF4 /* UIViewController.swift in Sources */,
-				155517831FF51C7F008C793C /* RecipeVideosTVC.swift in Sources */,
 				15A228341FFA150600907C09 /* UITextField.swift in Sources */,
 				155517721FF518AB008C793C /* Environment.swift in Sources */,
 				155517771FF51B40008C793C /* RecipeListCell.swift in Sources */,

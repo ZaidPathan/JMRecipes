@@ -38,10 +38,10 @@ class FirebaseManager {
         
         if let imagePath = recipe.imagePath {
             data[Const.APIParams.imagePath] = imagePath
-        } else if let videoPath = recipe.videoPath {
+        }
+        
+        if let videoPath = recipe.videoPath {
             data[Const.APIParams.videoPath] = videoPath
-        } else {
-            throw FirebaseError.invalidRecipeObject
         }
         
         ref = db.collection(collectionPath).addDocument(data: data, completion: completion)

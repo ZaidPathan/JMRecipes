@@ -53,18 +53,27 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🎥" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yIp-Ky-HqC">
+                        <rect key="frame" x="276" y="8" width="28" height="30"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="DDc-ii-xtk" secondAttribute="trailing" id="6vq-N0-xT7"/>
                     <constraint firstAttribute="bottom" secondItem="DDc-ii-xtk" secondAttribute="bottom" constant="10" id="ARD-Cq-eqt"/>
                     <constraint firstItem="NiY-hA-Lpt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="QaJ-fi-zWo"/>
                     <constraint firstAttribute="trailing" secondItem="NiY-hA-Lpt" secondAttribute="trailing" id="Y4B-E6-kRL"/>
+                    <constraint firstItem="yIp-Ky-HqC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="YMr-AW-wfR"/>
                     <constraint firstItem="NiY-hA-Lpt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="ig6-js-xfF"/>
                     <constraint firstItem="DDc-ii-xtk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="qJl-X0-iRf"/>
+                    <constraint firstAttribute="trailing" secondItem="yIp-Ky-HqC" secondAttribute="trailing" constant="16" id="zah-Pp-p26"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="lblVideo" destination="yIp-Ky-HqC" id="P18-Ab-Gjk"/>
                 <outlet property="recipeImage" destination="bRt-c4-i80" id="Vv1-cp-ivp"/>
                 <outlet property="recipeTitleLabel" destination="DDc-ii-xtk" id="n3e-oE-8EW"/>
             </connections>

@@ -86,6 +86,8 @@ class RecipeBookTVC: UITableViewController {
         let recipeListCell = tableView.dequeueReusableCell(withIdentifier: "RecipeListCell", for: indexPath) as? RecipeListCell
         recipeListCell?.recipeTitleLabel.text = arrRecipe?[indexPath.row].title
         
+        recipeListCell?.lblVideo.isHidden = (arrRecipe?[indexPath.row].videoPath == nil)
+        
         if let imagePath = (arrRecipe?[indexPath.row].imagePath), let imageURL = URL(string: imagePath) {
             recipeListCell?.recipeImage.sd_setImage(with: imageURL, placeholderImage: #imageLiteral(resourceName: "sampleDish"), options: SDWebImageOptions.highPriority, completed: { (image, error, cacheType, url) in
 

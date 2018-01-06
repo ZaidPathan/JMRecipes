@@ -195,6 +195,13 @@ class AddRecipeTVC: UITableViewController {
                 
                 if let filePath = filePath {
                     self.recipe?.imagePath = filePath
+                    
+                    if let videoPath = self.recipe?.videoPath, !videoPath.isEmpty, let _ = URL(string: videoPath) {
+                        self.recipe?.videoPath = videoPath
+                    } else {
+                        return
+                    }
+                    
                     addRecipe(recipe: self.recipe!)
                 } else {
                     self.showAlert(title: FirebaseError.fileUploadFailed.localizedDescription , message: nil, onB1Click: nil)
@@ -202,15 +209,16 @@ class AddRecipeTVC: UITableViewController {
                 }
             })
         } else {
-            if let videoPath = recipe?.videoPath, !videoPath.isEmpty, let _ = URL(string: videoPath) {
-                self.recipe?.videoPath = videoPath
-                addRecipe(recipe: self.recipe!)
-            } else {
-                 self.showAlert(title: Const.Alert.oneFileNeeded , message: nil, onB1Click: nil)
-                tableView.shake()
-                return
-            }
+            
         }
+        
+        if let videoPath = recipe?.videoPath, !videoPath.isEmpty, let _ = URL(string: videoPath) {
+            self.recipe?.videoPath = videoPath
+        } else {
+            return
+        }
+        
+        addRecipe(recipe: self.recipe!)
     }
 }
 

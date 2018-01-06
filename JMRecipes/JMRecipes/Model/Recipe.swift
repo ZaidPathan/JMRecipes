@@ -53,11 +53,13 @@ class Recipe {
         if let imagePath = docData[Const.APIParams.imagePath] as? String {
             self.imagePath = imagePath
         } else {
-            if let videoPath = docData[Const.APIParams.videoPath] as? String {
-               self.videoPath = videoPath
-            } else {
-                throw RecipeError.recipeCreationError
-            }
+           
+        }
+        
+        if let videoPath = docData[Const.APIParams.videoPath] as? String {
+            self.videoPath = videoPath
+        } else {
+            
         }
     }
 }
